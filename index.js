@@ -8,6 +8,7 @@ import {
     Routes
 } from 'discord.js';
 import hafas from './src/createHafasClient.js';
+import journeySlashCommand from './src/commands/journey.js';
 
 // Initialize the Discord bot client
 const client = new Client({
@@ -18,20 +19,7 @@ const client = new Client({
 const rest = new REST({version: '10'}).setToken(process.env.CLIENT_TOKEN);
 
 // Define the /journeys slash command
-const commands = [
-    new SlashCommandBuilder()
-        .setName('journeys')
-        .setDescription('Get journey details between two stations using station names')
-        .addStringOption(
-            option => option.setName('from').setDescription('Starting station name').setRequired(true)
-        )
-        .addStringOption(
-            option => option.setName('to').setDescription('Destination station name').setRequired(true)
-        )
-        .addStringOption(
-            option => option.setName('results').setDescription('Number of results').setRequired(false)
-        )
-];
+
 
 // Register the slash command
 (async () => {
